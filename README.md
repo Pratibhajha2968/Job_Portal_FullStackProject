@@ -42,3 +42,72 @@ Upload resume
 Search & apply for jobs
 
 Track application status
+
+🧩 Core Features (Must Have)
+🔐 Authentication & Security
+
+User registration & login
+
+JWT-based authentication
+
+Role-based authorization
+
+Password encryption (BCrypt)
+
+💼 Job Management
+
+Create / update / delete jobs
+
+Job categories (IT, Finance, HR)
+
+Job filters:
+
+Location
+
+Experience
+
+Salary
+
+Job type (Full-time / Intern)
+
+📄 Application Management
+
+Apply for jobs
+
+Resume upload (PDF)
+
+Application status:
+
+Applied
+
+Shortlisted
+
+Rejected
+
+🔍 Search & Filter
+
+Keyword-based job search
+
+Filter by:
+
+Location
+
+Salary
+
+Experience
+
+Job type
+
+⭐ Advanced Features (Optional but Impressive)
+
+Email notifications
+
+Job recommendations
+
+Admin analytics dashboard
+
+Pagination & sorting
+
+Save jobs (wishlist)
+
+Forgot password (OTP / email)
