@@ -1,5 +1,5 @@
 package com.excelR.Job_Portal_Backend.security;
 
-public class CustomUserDetailsService {
+public class SecurityConfig {
 
 }
