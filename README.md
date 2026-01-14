@@ -113,4 +113,15 @@ Save jobs (wishlist)
 Forgot password (OTP / email)
 
 
+🧠 BACKEND FLOW (FIRST UNDERSTAND THIS)
+
+Client (React)
+   ↓
+Controller  → receives HTTP request
+   ↓
+Service     → business logic
+   ↓
+Repository  → database operations
+   ↓
+Database (MySQL)
 
