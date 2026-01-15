@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="")
+@Table(name="jobapllication")
 public class JobApplication {
       
 	
