@@ -118,3 +118,65 @@ Forgot password (OTP / email)
 Client (React)  ->  Controller( receives Http request) -> Service(Buisness logic) ->Repository(database operations) -> database(MySQL)
  
 
+🗂️ FOLDER-WISE EXPLANATION (SHORT)
+📁 controller
+
+➡ Handles HTTP requests from frontend (React/Postman)
+
+AuthController.java → Login & register APIs
+
+UserController.java → User-related APIs
+
+JobController.java → Job-related APIs
+
+📁 dto
+
+➡ Used to transfer data safely (no direct entity exposure)
+
+LoginRequest.java → Email + password for login
+
+RegisterRequest.java → User registration data
+
+JobResponse.java → Job data sent to frontend
+
+📁 exception
+
+➡ Handles errors globally
+
+GlobalExceptionHandler.java → Central error handling
+
+📁 model
+
+➡ Database entities (tables)
+
+User.java → users table
+
+Job.java → jobs table
+
+JobApplication.java → applied_jobs table
+
+📁 repository
+
+➡ Direct database operations
+
+UserRepository.java → User DB queries
+
+📁 security
+
+➡ JWT authentication & authorization
+
+JwtUtil.java → Create & validate token
+
+JwtFilter.java → Intercepts requests
+
+SecurityConfig.java → Security rules
+
+📁 service
+
+➡ Business logic layer
+
+AuthService.java → Login/Register logic
+
+UserService.java → User operations
+
+JobService.java → Job operations
