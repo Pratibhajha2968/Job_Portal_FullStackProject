@@ -1,9 +1,18 @@
 package com.excelR.Job_Portal_Backend.model;
 
-
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+@Entity
+@Data
+@Table(name="user")
 public class User{
 	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 //	In this the job seeker , the admin of the page and the recruiters information are there
 	
 	private long id;
@@ -13,4 +22,5 @@ public class User{
 	private String role;
 	
 	
+
 }
