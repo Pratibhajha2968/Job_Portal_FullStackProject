@@ -1,16 +1,10 @@
 package com.excelR.Job_Portal_Backend.dto;
 
+import lombok.Data;
 
-// sign up page for  new candidates
-// Used when new user registers
-
-// Accepts only required signup fields
-// No ID, no internal fields
+@Data
 public class RegisterRequest {
-    
-	
-	   private String name;
-	   private String email;
-	   private String password;
-	   private String role;
+    private String email;
+    private String password;
+    private String role;
 }

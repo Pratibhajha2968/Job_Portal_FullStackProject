@@ -1,30 +1,29 @@
 package com.excelR.Job_Portal_Backend.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.excelR.Job_Portal_Backend.model.User;
-import com.excelR.Job_Portal_Backend.service.UserService;
+import com.excelR.Job_Portal_Backend.service.AuthService;
+
 @RestController
 @RequestMapping("/api/auth")
-	
+@CrossOrigin
 public class AuthController {
-	 private final UserService userService;
 
-	    public AuthController(UserService userService) {
-	        this.userService = userService;
-	    }
+    private final AuthService authService;
 
- //     http://localhost:8080/api/auth/register
-	    @PostMapping("/register")
-	    public User register(@RequestBody User user) {
-	        return userService.register(user);
-	    }
-//	     http://localhost:8080/api/auth/login
-	    @PostMapping("/login")
-	    public String login(@RequestBody User user) {
-	        return "Login API will be implemented later";
-	    }
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+//  http://localhost:8080/api/auth/register
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return authService.register(user);
+    }
+//  http://localhost:8080/api/auth/login
+    @PostMapping("/login")
+    public User login(@RequestBody User user) {
+        return authService.login(user.getEmail(), user.getPassword());
+    }
+
 }

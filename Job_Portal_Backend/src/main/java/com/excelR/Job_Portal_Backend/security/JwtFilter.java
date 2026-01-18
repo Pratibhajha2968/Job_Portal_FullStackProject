@@ -1,5 +1,25 @@
 package com.excelR.Job_Portal_Backend.security;
 
-public class JwtFilter {
-    
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+import java.io.IOException;
+
+@Component
+public class JwtFilter extends OncePerRequestFilter {
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+        // 1️⃣ Extract JWT from Authorization header
+        // 2️⃣ Validate JWT
+        // 3️⃣ If valid, set Authentication in SecurityContext
+        // 4️⃣ If invalid, optionally reject request
+
+        filterChain.doFilter(request, response); // continue the chain
+    }
 }

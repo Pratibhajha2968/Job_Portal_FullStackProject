@@ -1,14 +1,18 @@
 package com.excelR.Job_Portal_Backend.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
+import java.util.List;
 import com.excelR.Job_Portal_Backend.model.User;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    public User register(@RequestBody User user) {
-        return user;
-    }
+    // Auth related
+    User register(User user);
+    User findByEmail(String email);
+
+    // CRUD operations
+    List<User> getAllUsers();
+    User getUserById(Long id);
+    User createUser(User user);
+    User updateUser(Long id, User user);
+    void deleteUser(Long id);
 }
