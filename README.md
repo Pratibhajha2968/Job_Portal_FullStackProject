@@ -1,195 +1,181 @@
-Job_Portal_FullStackProject
+# 🧑‍💼 Job Portal – Full Stack Web Application
 
-🧠 What is a Job Portal?
+A **Full Stack Job Portal Web Application** where **job seekers** can search and apply for jobs, and **recruiters/admins** can post and manage job listings. This project is built to demonstrate real‑world full‑stack development skills using modern web technologies.
 
-A Job Portal is a web application where:
+---
 
-Recruiters post jobs
+## 🚀 Features
 
-Job Seekers search & apply for jobs
+### 👤 User (Job Seeker)
 
-Admins manage users, jobs, and reports
+* User registration & login (JWT authentication)
+* Browse all available jobs
+* Search & filter jobs by title, location, and category
+* View job details
+* Apply for jobs
+* View applied jobs
 
-Examples: Naukri, Indeed, LinkedIn Jobs
+### 🧑‍💻 Recruiter / Admin
 
-👥 User Roles
-1️⃣ Admin
+* Admin login
+* Post new job openings
+* Update & delete job postings
+* View applicants for a job
 
-Manage users (job seekers & recruiters)
+### 🔐 Authentication & Security
 
-Approve / block job posts
+* JWT-based authentication
+* Role-based access control (User / Admin)
+* Secure API routes
 
-View reports (jobs, applications)
+---
 
-2️⃣ Recruiter
+## 🛠️ Tech Stack
 
-Post new jobs
+### Frontend
 
-Update job details
+* **React.js**
+* **React Router DOM** – routing
+* **Axios** – API calls
+* **CSS / Tailwind (if used)** – styling
 
-View applicants
+### Backend
 
-Download resumes
+* **Node.js**
+* **Express.js**
+* **MongoDB**
+* **Mongoose** – ODM
+* **JWT** – authentication
+* **bcrypt.js** – password hashing
 
-3️⃣ Job Seeker
+---
 
-Register & login
+## 📁 Project Structure
 
-Create profile
+### Frontend (`job-portal-frontend`)
 
-Upload resume
+```
+job-portal-frontend/
+│
+├── public/
+│   └── index.html
+│
+├── src/
+│   ├── assets/          # Images, icons
+│   ├── components/      # Reusable components (Navbar, Footer, JobCard)
+│   ├── pages/           # Pages (Home, Login, Register, Jobs, JobDetails)
+│   ├── services/        # API service files
+│   ├── styles/          # Global styles
+│   ├── App.jsx
+│   └── main.jsx
+│
+└── package.json
+```
 
-Search & apply for jobs
+### Backend (`job-portal-backend`)
 
-Track application status
+```
+job-portal-backend/
+│
+├── controllers/     # Business logic
+├── models/          # MongoDB schemas
+├── routes/          # API routes
+├── middleware/      # Auth & error middleware
+├── config/          # DB configuration
+├── server.js        # Entry point
+└── package.json
+```
 
-🧩 Core Features (Must Have)
-🔐 Authentication & Security
+---
 
-User registration & login
+## ⚙️ Installation & Setup
 
-JWT-based authentication
+### 1️⃣ Clone the Repository
 
-Role-based authorization
+```bash
+git clone https://github.com/your-username/job-portal.git
+```
 
-Password encryption (BCrypt)
+### 2️⃣ Backend Setup
 
-💼 Job Management
+```bash
+cd job-portal-backend
+npm install
+npm start
+```
 
-Create / update / delete jobs
+Create a `.env` file:
 
-Job categories (IT, Finance, HR)
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
 
-Job filters:
+### 3️⃣ Frontend Setup
 
-Location
+```bash
+cd job-portal-frontend
+npm install
+npm run dev
+```
 
-Experience
+---
 
-Salary
+## 🔗 API Endpoints (Sample)
 
-Job type (Full-time / Intern)
+### Auth
 
-📄 Application Management
+* `POST /api/auth/register`
+* `POST /api/auth/login`
 
-Apply for jobs
+### Jobs
 
-Resume upload (PDF)
+* `GET /api/jobs`
+* `POST /api/jobs` (Admin)
+* `PUT /api/jobs/:id`
+* `DELETE /api/jobs/:id`
 
-Application status:
+### Applications
 
-Applied
+* `POST /api/apply/:jobId`
+* `GET /api/applications`
 
-Shortlisted
-
-Rejected
-
-🔍 Search & Filter
-
-Keyword-based job search
-
-Filter by:
-
-Location
-
-Salary
-
-Experience
-
-Job type
-
-⭐ Advanced Features (Optional but Impressive)
-
-Email notifications
-
-Job recommendations
-
-Admin analytics dashboard
-
-Pagination & sorting
-
-Save jobs (wishlist)
-
-Forgot password (OTP / email)
+---
 
 
-🧠 BACKEND FLOW (FIRST UNDERSTAND THIS)
 
-Client (React)  ->  Controller( receives Http request) -> Service(Buisness logic) ->Repository(database operations) -> database(MySQL)
+## 🎯 Future Enhancements
+
+* Resume upload feature
+* Company profiles
+* Email notifications
+* Admin analytics dashboard
+* Pagination & advanced filters
+
+---
+
+## 📚 Learning Outcomes
+
+* Full stack application development
+* REST API design
+* Authentication & authorization
+* Frontend–backend integration
+* Clean folder structure & best practices
+
+---
+
+## 👩‍💻 Author
+
+**Pratibha Priya Jha**
+Frontend / MERN Stack Developer
+GitHub: [https://github.com/Pratibhajha2968](https://github.com/Pratibhajha2968)
+LinkedIn: [https://www.linkedin.com/in/pratibhajha2589](https://www.linkedin.com/in/pratibhajha2589)
+   AND
+ **Agalya D**  
+
+---
+
+⭐ If you like this project, don’t forget to give it a star!
  
-
-🗂️ FOLDER-WISE EXPLANATION (SHORT)
-📁 controller
-
-➡ Handles HTTP requests from frontend (React/Postman)
-
-AuthController.java → Login & register APIs
-
-UserController.java → User-related APIs
-
-JobController.java → Job-related APIs
-
-📁 dto
-
-➡ Used to transfer data safely (no direct entity exposure)
-
-LoginRequest.java → Email + password for login
-
-RegisterRequest.java → User registration data
-
-JobResponse.java → Job data sent to frontend
-
-📁 exception
-
-➡ Handles errors globally
-
-GlobalExceptionHandler.java → Central error handling
-
-📁 model
-
-➡ Database entities (tables)
-
-User.java → users table
-
-Job.java → jobs table
-
-JobApplication.java → applied_jobs table
-
-📁 repository
-
-➡ Direct database operations
-
-UserRepository.java → User DB queries
-
-📁 security
-
-➡ JWT authentication & authorization
-
-JwtUtil.java → Create & validate token
-
-JwtFilter.java → Intercepts requests
-
-SecurityConfig.java → Security rules
-
-📁 service
-
-➡ Business logic layer
-
-AuthService.java → Login/Register logic
-
-UserService.java → User operations
-
-JobService.java → Job operations
-
-
-frontend --- npm create vite@latest
-
-        --employee_boot
-
-        --react -- javascript
-
-        cd employee_boot
-
-        npm install axios react-router-dom bootstrap
-
-        npm run dev
+       
