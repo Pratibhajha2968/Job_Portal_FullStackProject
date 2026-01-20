@@ -180,3 +180,16 @@ AuthService.java → Login/Register logic
 UserService.java → User operations
 
 JobService.java → Job operations
+
+
+frontend --- npm create vite@latest
+
+        --employee_boot
+
+        --react -- javascript
+
+        cd employee_boot
+
+        npm install axios react-router-dom bootstrap
+
+        npm run dev
