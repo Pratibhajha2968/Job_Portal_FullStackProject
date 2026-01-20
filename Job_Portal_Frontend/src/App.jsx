@@ -1,7 +1,15 @@
-import Login from "./pages/Login";
+import React from 'react'
+import Register from './pages/Register'
 
-function App() {
-  return <Login />;
+const App = () => {
+  return (
+    <>
+    
+    <Route path="/register" element={<Register />} ></Route>
+    
+    </>
+  )
 }
 
-export default App;
+export default App
+
