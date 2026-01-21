@@ -119,6 +119,35 @@ cd job-portal-frontend
 npm install
 npm run dev
 ```
+# 🚀 Job Portal Frontend
+
+This is the **frontend part of a Job Portal** project, built with **React.js**.  
+
+---
+
+## 🎯 Features Implemented (So Far)
+
+- 🏠 **Home Page**
+  - Displays a list of **job cards** (currently static).  
+  - Basic **hover effects** and card styling for better user experience.  
+- 🧩 **Reusable Components**
+  - `JobCard` component to display individual job information.  
+  - `Footer` component for consistent layout.  
+- 🛠 **React Router Setup**
+  - Prepared for future navigation like **Job Details page**.  
+
+---
+
+## 💻 Tech Stack
+
+- **Frontend:** React.js  
+- **Styling:** CSS  
+- **Routing:** react-router-dom  
+
+---
+
+> 🔹 Currently, only the **Home page** is implemented.  
+> 🔹 Future updates will include **dynamic jobs**, **Job Details page**, and **filters/search functionality**.
 
 ---
 
