@@ -1,51 +1,41 @@
-import React from 'react'
-import { useNavigate } from "react-router-dom"
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
 
-
-  const handlesubmit = () => {
-          
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // later: register logic / API call
-    navigate("/login"); // redirect to login page
-
-};
-
-
+    navigate("/login");
+  };
 
   return (
-    <div  style={{ textAlign:'center' }}>
+    <div style={{ textAlign: "center" }}>
       <h1>Register dashboard</h1>
 
-      <form action="register">
-
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Name</label> <br />
-          <input type="text" placeholder='please enter your name' />
-        </div> <br /><br />
-        
+          <input type="text" placeholder="Please enter your name" />
+        </div>
+        <br /><br />
 
         <div>
           <label>Email</label> <br />
-          <input type="text" placeholder='please enter your Email' />
-        </div>   <br /><br />
-        
+          <input type="email" placeholder="Please enter your email" />
+        </div>
+        <br /><br />
 
         <div>
           <label>Password</label> <br />
-          <input type="text" placeholder='please enter your Password' />
-        </div>  <br /><br />
-        
+          <input type="password" placeholder="Please enter your password" />
+        </div>
+        <br /><br />
 
-        <button type='submit'>Register</button>
-
-
+        <button type="submit">Register</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Register
-
+export default Register;

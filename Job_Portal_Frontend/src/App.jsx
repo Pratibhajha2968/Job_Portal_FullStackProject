@@ -1,21 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
 
-const App = () => {
+// Components
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import JobCard from "./components/JobCard/JobCard"; // fixed path
+
+// Pages
+import Home from "./pages/Home";
+import Jobs from "./pages/Jobs";           // fixed path
+import Companies from "./pages/Companies";
+import HowItWorks from "./pages/HowItWorks";
+import Login from "./pages/Login";
+
+function App() {
   return (
     <BrowserRouter>
+      <Navbar />
+
       <Routes>
-        <Route path="/" element={<h1>Home Page</h1>} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/companies" element={<Companies />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
-};
+}
 
 export default App;
