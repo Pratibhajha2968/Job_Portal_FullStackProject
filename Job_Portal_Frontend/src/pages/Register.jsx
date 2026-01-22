@@ -1,41 +1,55 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
+import React from 'react'
+import {useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../styles/Register.css"
 const Register = () => {
-  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/login");
-  };
 
+    const navigate = useNavigate();
+  const [form, setForm] = useState(
+      {
+        name: "",
+        email: "",
+        password: ""
+    });
+  
+      const handleChange = (e) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+
+
+    const handleSubmit = async(e) => {
+      e.preventDefault();
+
+
+      try {
+        await axios.post("http://localhost:8080/api/auth/register", form);
+        alert("registration successfull");
+        navigate("/login");
+
+      }
+      catch (err) {
+        alert(err.response.message || "Registeration Failed");
+      }
+    };
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Register dashboard</h1>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name</label> <br />
-          <input type="text" placeholder="Please enter your name" />
-        </div>
-        <br /><br />
-
-        <div>
-          <label>Email</label> <br />
-          <input type="email" placeholder="Please enter your email" />
-        </div>
-        <br /><br />
-
-        <div>
-          <label>Password</label> <br />
-          <input type="password" placeholder="Please enter your password" />
-        </div>
-        <br /><br />
-
+         <div className="auth-container">
+       <h2>Register</h2>
+       <form onSubmit={handleSubmit}>
+         <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
         <button type="submit">Register</button>
+        
+        <p>Already have an account? <Link to="/login">Login</Link></p>
       </form>
-    </div>
-  );
-};
 
-export default Register;
+       {/* <p>Already have an account? <Link to="/login">Login</Link></p> */}
+     </div>
+  )
+}
+
+export default Register
+

@@ -1,6 +1,6 @@
 import React from "react";
 import JobCard from "../components/JobCard/JobCard";
-import "./Jobs.css";
+import "../styles/Jobs.css";
 
 const Jobs = () => {
   return (
