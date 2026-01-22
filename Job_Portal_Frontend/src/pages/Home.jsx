@@ -1,7 +1,7 @@
 import React from "react";
 import JobCard from "../components/JobCard/JobCard";
 import Footer from "../components/Footer/Footer";
-import "./Home.css";
+import "../styles/Home.css";
 import logoImg from "../assets/MultiMedia/Logo.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
