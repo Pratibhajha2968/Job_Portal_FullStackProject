@@ -36,6 +36,11 @@ public class AuthServiceImpl implements AuthService {
 
         User user = userRepository.findByEmail(email);
 
+        if (user == null) {
+            // user not found
+            throw new RuntimeException("Invalid email or password");
+        }
+
         System.out.println("LOGIN EMAIL = " + email);
         System.out.println("LOGIN RAW PASSWORD = " + password);
         System.out.println("DB PASSWORD = " + user.getPassword());
@@ -44,11 +49,12 @@ public class AuthServiceImpl implements AuthService {
         System.out.println("PASSWORD MATCH = " + match);
 
         if (!match) {
-            throw new RuntimeException("Invalid credentials");
+            throw new RuntimeException("Invalid email or password");
         }
 
         return user;
     }
+
 
 
 }
