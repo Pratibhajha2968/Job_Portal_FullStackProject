@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import {Link , useNavigate } from "react-router-dom";
 import Register from "./Register";
+import "../styles/Login.css";
 
 const Login = () => {
 
@@ -43,28 +44,36 @@ const Login = () => {
 
 
   return (
-    <div className="login-container">
+    
+      <div className="login-container">
       
       <form className="login-form" onSubmit={handleSubmit}>
         <h1>Login</h1>
         
         {error && <p className="error">{error}</p>}
 
-        <input type="email" name="email" placeholder="enter email" onChange={handleChange} required />
-        <input type="password" name="password" placeholder="enter password" onChange={handleChange} required />
+        <input type="email" name="email" placeholder="enter email" onChange={handleChange} required /><br /><br />
+        
+           <input type="password" name="password" placeholder="Enter password" onChange={handleChange} required/>
+
+                         <div className="forgot-password">
+                           <span onClick={() => navigate("/forgot-password")}>
+                                 Forgot password?
+                           </span>
+                          </div>
+
 
         <button type="submit">Login</button>
 
         <p>
-           
-          Dont have an account?{" "}
-
-          <span onClick={() => navigate("/Register")} className="Link">
+            Dont have an account?{" "}
+             <span onClick={() => navigate("/Register")} className="Link">
             Register
           </span>
         </p>
       </form>
     </div>
+
   );
 };
 
