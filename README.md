@@ -2,6 +2,12 @@
 
 A **Full Stack Job Portal Web Application** where **job seekers** can search and apply for jobs, and **recruiters/admins** can post and manage job listings. This project is built to demonstrate real‑world full‑stack development skills using modern web technologies.
 
+🏗️ Job Portal – System Design
+
+You are building:
+
+Candidate → Login → View Jobs → Apply → Upload Resume → Save Profile
+
 ---
 
 ## 🚀 Features
@@ -193,6 +199,7 @@ This is the **frontend part of a Job Portal** project, built with **React.js**.
 * Clean folder structure & best practices
 
 ---
+
 
 ## 👩‍💻 Author
 
