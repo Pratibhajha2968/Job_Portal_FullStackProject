@@ -2,46 +2,50 @@ package com.excelR.Job_Portal_Backend.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Component
 public class JwtUtil {
 
-    private final String SECRET_KEY = "mySecretKey12345"; // keep it secret & safe
+    // Must be at least 256 bits (32 chars)
+    private static final String SECRET_KEY = "mySuperSecureJwtSecretKeyForJobPortal12345";
 
-    // Generate token
+    private final SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+
+    // Generate JWT token
     public String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .signWith(key)
                 .compact();
     }
 
-    // Extract username from token
+    // Extract username
     public String extractUsername(String token) {
         return extractClaims(token).getSubject();
     }
 
-    // Check if token is valid
+    // Validate token
     public boolean validateToken(String token, String username) {
-        String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(username) && !isTokenExpired(token));
+        return username.equals(extractUsername(token)) && !isTokenExpired(token);
     }
 
-    // Check if token is expired
+    // Check expiration
     private boolean isTokenExpired(String token) {
         return extractClaims(token).getExpiration().before(new Date());
     }
 
-    // Extract all claims
+    // Parse JWT
     private Claims extractClaims(String token) {
-        return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
                 .parseClaimsJws(token)
                 .getBody();
     }

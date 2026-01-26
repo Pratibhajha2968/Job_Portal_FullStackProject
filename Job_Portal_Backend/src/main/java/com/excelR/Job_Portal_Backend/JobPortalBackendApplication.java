@@ -9,4 +9,5 @@ public class JobPortalBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(JobPortalBackendApplication.class, args);
     }
-}
+}		
+

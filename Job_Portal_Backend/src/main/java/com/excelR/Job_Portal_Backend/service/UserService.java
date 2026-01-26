@@ -15,4 +15,12 @@ public interface UserService {
     User createUser(User user);
     User updateUser(Long id, User user);
     void deleteUser(Long id);
+	User getUserFromToken(String token);
+//	User login(String email, String password);
+//	User login(String email, String password);
+	User login(String email, String password);
+    
+    
+    
+
 }
