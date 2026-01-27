@@ -47,10 +47,9 @@ Candidate → Login → View Jobs → Apply → Upload Resume → Save Profile
 
 ### Backend
 
-* **Node.js**
-* **Express.js**
-* **MongoDB**
-* **Mongoose** – ODM
+* Spring
+* SpringBoot
+* Spring Security
 * **JWT** – authentication
 * **bcrypt.js** – password hashing
 
@@ -113,8 +112,7 @@ npm start
 Create a `.env` file:
 
 ```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
+PORT=8080
 JWT_SECRET=your_secret_key
 ```
 
@@ -153,7 +151,7 @@ This is the **frontend part of a Job Portal** project, built with **React.js**.
 ---
 
 > 🔹 Currently, only the **Home page** is implemented.  
-> 🔹 Future updates will include **dynamic jobs**, **Job Details page**, and **filters/search functionality**.
+> 🔹  updated all **dynamic jobs**, **Job Details page**, and **filters/search functionality**.
 
 ---
 
