@@ -31,11 +31,7 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.job-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .job-header h1,
 .job-header h2 {
@@ -115,4 +111,13 @@
   color: red;
   padding: 20px;
   font-weight: 600;
+}
+
+.company-name {
+  font-size: 16px;
+  font-weight: bold;
+  /* makes it bold */
+  color: #222;
+  /* darker for emphasis */
+  margin-top: 4px;
 }

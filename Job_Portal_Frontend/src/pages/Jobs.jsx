@@ -262,54 +262,53 @@ const Jobs = () => {
     setFilteredJobs(filtered);
   }, [title, location]);
 
-  return (
-    <div className="jobs-container">
-      {filteredJobs.map((job) => (
-        <div
-          key={job.id}
-          className="job-card"
-          onClick={() => navigate(`/job/${job.id}`)}
-        >
-          <div className="job-header">
-            <h2>{job.title}</h2>
-            <p className="company-name">🏢 {job.company}</p>
-
-            <span
-              className={
-                job.experience.toLowerCase().includes("fresher")
-                  ? "badge fresher"
-                  : "badge experienced"
-              }
-            >
-              {job.experience.toLowerCase().includes("fresher")
-                ? "Fresher"
-                : "Experienced"}
-            </span>
-          </div>
-
-          <p className="job-info">
-            📍 {job.location} | 💻 {job.mode}
-          </p>
-          <p className="job-info">
-            💰 {job.salary} | 🧑‍💻 {job.experience}
-          </p>
-
-          <p className="job-desc">
-            {job.description.length > 100
-              ? job.description.substring(0, 100) + "..."
-              : job.description}
-          </p>
-
-          <Link
-            to={`/job/${job.id}`}
-            className="read-more"
-            onClick={(e) => e.stopPropagation()}
+    return (
+      <div className="jobs-container">
+        {filteredJobs.map((job) => (
+          <div
+            key={job.id}
+            className="job-card"
+            onClick={() => navigate(`/job/${job.id}`)}
           >
-            Read More
-          </Link>
-        </div>
-      ))}
-    </div>
-  );
-};
+            <div className="job-header">
+              <h2>{job.title}</h2>
+              <p className="company-name">   {job.company}</p>
+              <span
+                className={
+                  job.experience.toLowerCase().includes("fresher")
+                    ? "badge fresher"
+                    : "badge experienced"
+                }
+              >
+                {job.experience.toLowerCase().includes("fresher")
+                  ? "Fresher"
+                  : "Experienced"}
+              </span>
+            </div>
+            <p className="job-info">
+              📍 {job.location} | 💻 {job.mode}
+            </p>
+            <p className="job-info">
+              💰 {job.salary} | 🧑‍💻 {job.experience}
+            </p>
+            <p className="job-desc">
+              {job.description.length > 100
+                ? job.description.substring(0, 100) + "..."
+                : job.description}
+            </p>
+
+            <Link
+              to={`/job/${job.id}`}
+              className="read-more"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Read More
+            </Link>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+
 export default Jobs;
