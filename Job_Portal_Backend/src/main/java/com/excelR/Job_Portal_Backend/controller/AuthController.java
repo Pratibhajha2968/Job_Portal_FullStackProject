@@ -31,8 +31,7 @@ public class AuthController {
         User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
-        user.setRole(request.getRole());
-
+        
         return authService.register(user);
     }
 

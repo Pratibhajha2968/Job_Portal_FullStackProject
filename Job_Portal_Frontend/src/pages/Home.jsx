@@ -22,7 +22,8 @@ const Home = () => {
         
         {/* Nav links */}
         <nav>
-          <Link to="/Jobs">Jobs</Link>  
+          <Link to="/Jobs">Jobs</Link>
+          <Link to="/JobDetails">JobDetails</Link>
           <Link to = "/Companies">Companies</Link>
           <Link to ="/how-it-works">How It Works</Link>
           <Link to="/login">Login</Link>

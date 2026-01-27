@@ -5,8 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name="job")
 public class Job {
@@ -20,5 +27,8 @@ public class Job {
 	    private String description; 
 	    private String salary;
 	    private String location;
+	    
+	    
+	   
 	}
 

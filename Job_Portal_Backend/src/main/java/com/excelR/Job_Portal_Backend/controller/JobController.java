@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/job")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/job")
+@CrossOrigin(origins = "http://localhost:3000") // React frontend origin
 public class JobController {
 
     private final JobService jobService;
