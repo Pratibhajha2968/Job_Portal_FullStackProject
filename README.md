@@ -205,12 +205,12 @@ This is the **frontend part of a Job Portal** project, built with **React.js**.
 
 **Pratibha Priya Jha**
 Frontend / MERN Stack Developer
-GitHub: [https://github.com/Pratibhajha2968](https://github.com/Pratibhajha2968)
-LinkedIn: [https://www.linkedin.com/in/pratibhajha2589](https://www.linkedin.com/in/pratibhajha2589)
+GitHub: [https://github.com/Pratibhajha2968]
+LinkedIn: [https://www.linkedin.com/in/pratibhajha2589]
    AND
  **Agalya D**  
- GitHub: 
- LinkedIn: 
+ GitHub: [https://github.com/agalya12-tech] 
+ LinkedIn: [https://www.linkedin.com/in/agalya-d-437248306/]
 
 ---
 
