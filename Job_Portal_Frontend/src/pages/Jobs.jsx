@@ -272,6 +272,8 @@ const Jobs = () => {
         >
           <div className="job-header">
             <h2>{job.title}</h2>
+            <p className="company-name">🏢 {job.company}</p>
+
             <span
               className={
                 job.experience.toLowerCase().includes("fresher")
