@@ -1,33 +1,30 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "../styles/Jobs.css"; // your CSS file
-import { useSearchParams } from "react-router-dom";
 
 const Jobs = () => {
   const navigate = useNavigate();
+  // const { id } = useParams();
 
   const [searchParams] = useSearchParams();
-const title = searchParams.get("title");
+  const title = searchParams.get("title");
   const location = searchParams.get("location");
 
-     const allJobs = [
-    { id: 1, title: "Frontend Developer", location: "Bangalore" },
-    { id: 2, title: "Backend Developer", location: "Hyderabad" },
-    { id: 3, title: "Fullstack Developer", location: "Pune" },
-    { id: 4, title: "React Developer", location: "Bangalore" },
-  ];
-  
-      useEffect(() => {
+  const [allJobs, setAllJobs] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+
+  useEffect(() => {
     let filtered = allJobs;
 
     if (title) {
       filtered = filtered.filter((job) =>
-        job.title.toLowerCase().includes(title.toLowerCase())
+        job.title.toLowerCase().includes(title.toLowerCase()),
       );
     }
 
     if (location) {
       filtered = filtered.filter((job) =>
-        job.location.toLowerCase().includes(location.toLowerCase())
+        job.location.toLowerCase().includes(location.toLowerCase()),
       );
     }
 
@@ -38,6 +35,7 @@ const title = searchParams.get("title");
     {
       id: 1,
       title: "Frontend Developer",
+      company: "Amazon",
       location: "Bangalore",
       mode: "Remote",
       salary: "8 – 12 LPA",
@@ -48,6 +46,7 @@ const title = searchParams.get("title");
     {
       id: 2,
       title: "Backend Developer",
+      company: "Infosys",
       location: "Hyderabad",
       mode: "Hybrid",
       salary: "10 – 15 LPA",
@@ -58,6 +57,7 @@ const title = searchParams.get("title");
     {
       id: 3,
       title: "Full Stack Developer",
+      company: "TCS",
       location: "Chennai",
       mode: "On-site",
       salary: "12 – 18 LPA",
@@ -68,6 +68,7 @@ const title = searchParams.get("title");
     {
       id: 4,
       title: "UI/UX Designer",
+      company: "Wipro",
       location: "Pune",
       mode: "Remote",
       salary: "6 – 10 LPA",
@@ -78,6 +79,7 @@ const title = searchParams.get("title");
     {
       id: 5,
       title: "Data Analyst",
+      company: "Zomato",
       location: "Bangalore",
       mode: "Hybrid",
       salary: "5 – 8 LPA",
@@ -88,6 +90,7 @@ const title = searchParams.get("title");
     {
       id: 6,
       title: "DevOps Engineer",
+      company: "Uber",
       location: "Mumbai",
       mode: "On-site",
       salary: "8 – 14 LPA",
@@ -98,6 +101,7 @@ const title = searchParams.get("title");
     {
       id: 7,
       title: "Mobile App Developer",
+      company: "PhonePe",
       location: "Bangalore",
       mode: "Remote",
       salary: "7 – 12 LPA",
@@ -108,6 +112,7 @@ const title = searchParams.get("title");
     {
       id: 8,
       title: "Machine Learning Engineer",
+      company: "Microsoft",
       location: "Hyderabad",
       mode: "Hybrid",
       salary: "12 – 20 LPA",
@@ -118,6 +123,7 @@ const title = searchParams.get("title");
     {
       id: 9,
       title: "Quality Assurance Engineer",
+      company: "Adobe",
       location: "Chennai",
       mode: "On-site",
       salary: "5 – 9 LPA",
@@ -128,6 +134,7 @@ const title = searchParams.get("title");
     {
       id: 10,
       title: "Cloud Engineer",
+      company: "Google",
       location: "Bangalore",
       mode: "Remote",
       salary: "10 – 18 LPA",
@@ -138,6 +145,7 @@ const title = searchParams.get("title");
     {
       id: 11,
       title: "React Developer",
+      company: "Byju's",
       location: "Pune",
       mode: "Hybrid",
       salary: "8 – 14 LPA",
@@ -148,6 +156,7 @@ const title = searchParams.get("title");
     {
       id: 12,
       title: "Node.js Developer",
+      company: "Freshworks",
       location: "Hyderabad",
       mode: "On-site",
       salary: "9 – 16 LPA",
@@ -158,6 +167,7 @@ const title = searchParams.get("title");
     {
       id: 13,
       title: "Python Developer",
+      company: "Infosys",
       location: "Bangalore",
       mode: "Remote",
       salary: "7 – 12 LPA",
@@ -168,6 +178,7 @@ const title = searchParams.get("title");
     {
       id: 14,
       title: "Data Scientist",
+      company: "CRED",
       location: "Mumbai",
       mode: "Hybrid",
       salary: "12 – 20 LPA",
@@ -178,6 +189,7 @@ const title = searchParams.get("title");
     {
       id: 15,
       title: "Software Engineer Intern",
+      company: "TCS",
       location: "Chennai",
       mode: "Remote",
       salary: "3 – 5 LPA",
@@ -188,6 +200,7 @@ const title = searchParams.get("title");
     {
       id: 16,
       title: "Java Developer",
+      company: "Infosys",
       location: "Bangalore",
       mode: "On-site",
       salary: "9 – 15 LPA",
@@ -198,6 +211,7 @@ const title = searchParams.get("title");
     {
       id: 17,
       title: "Android Developer",
+      company: "Flipkart",
       location: "Hyderabad",
       mode: "Remote",
       salary: "7 – 13 LPA",
@@ -208,6 +222,7 @@ const title = searchParams.get("title");
     {
       id: 18,
       title: "iOS Developer",
+      company: "Ola Electric",
       location: "Pune",
       mode: "Hybrid",
       salary: "8 – 14 LPA",
@@ -218,6 +233,7 @@ const title = searchParams.get("title");
     {
       id: 19,
       title: "UI Developer",
+      company: "Wipro",
       location: "Chennai",
       mode: "Remote",
       salary: "6 – 10 LPA",
@@ -228,6 +244,7 @@ const title = searchParams.get("title");
     {
       id: 20,
       title: "Business Analyst",
+      company: "Goldman Sachs",
       location: "Mumbai",
       mode: "On-site",
       salary: "5 – 9 LPA",
@@ -237,9 +254,18 @@ const title = searchParams.get("title");
     },
   ];
 
+  const JobDetails = () => {
+    const { id } = useParams();
+
+    const job = jobs.find((j) => j.id === Number(id));
+
+    if (!job) {
+      return <h2 style={{ padding: "40px" }}>Job not found</h2>;
+    }
+  };
+
   return (
     <div className="jobs-container">
-
       {jobs.map((job) => (
         <div
           key={job.id}
