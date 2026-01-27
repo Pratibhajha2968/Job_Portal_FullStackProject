@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "../styles/Jobs.css"; // your CSS file
@@ -6,9 +7,19 @@ const Jobs = () => {
   const navigate = useNavigate();
   // const { id } = useParams();
 
+
+import React, { useEffect, useState } from "react"; 
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import "../styles/Jobs.css"; 
+import { allJobs } from "../pages/JobsData"; // ✅ import shared jobs array
+
+const Jobs = () => {
+  const navigate = useNavigate();
+
   const [searchParams] = useSearchParams();
   const title = searchParams.get("title");
   const location = searchParams.get("location");
+
 
   const [allJobs, setAllJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
@@ -30,6 +41,7 @@ const Jobs = () => {
 
     setFilteredJobs(filtered);
   }, [title, location]);
+
 
   const jobs = [
     {
@@ -264,9 +276,11 @@ const Jobs = () => {
     }
   };
 
+ 
   return (
     <div className="jobs-container">
-      {jobs.map((job) => (
+      {filteredJobs.map((job) => (
+
         <div
           key={job.id}
           className="job-card"
@@ -286,7 +300,6 @@ const Jobs = () => {
                 : "Experienced"}
             </span>
           </div>
-          <p className="job-company">{job.company}</p>
           <p className="job-info">
             📍 {job.location} | 💻 {job.mode}
           </p>
@@ -299,11 +312,10 @@ const Jobs = () => {
               : job.description}
           </p>
 
-          {/* ✅ Read More as Link */}
           <Link
             to={`/job/${job.id}`}
             className="read-more"
-            onClick={(e) => e.stopPropagation()} // prevents parent div click
+            onClick={(e) => e.stopPropagation()}
           >
             Read More
           </Link>

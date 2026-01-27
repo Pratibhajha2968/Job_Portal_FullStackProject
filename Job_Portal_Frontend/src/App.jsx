@@ -8,18 +8,17 @@ import Navbar from "./components/Navbar/Navbar";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
+
 import JobDetails from "./pages/JobDetails";
 import JobPost from "./pages/JobPost";
 import Jobs from "./pages/Jobs"; // fixed path
-import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
-
-
 
 function App() {
   return (
     <BrowserRouter>
+      {/* Navbar without login */}
       <Navbar />
 
       <Routes>
@@ -28,12 +27,12 @@ function App() {
         <Route path="/job/:id" element={<JobDetails />} />
 
         {/* <Route path="/jobdetails" element={<JobDetails />} /> */}
+
         <Route path="/jobpost" element={<JobPost />} />
         <Route path="/companies" element={<Companies />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<div></div>} />
       </Routes>
 
