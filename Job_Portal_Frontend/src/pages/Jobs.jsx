@@ -1,8 +1,38 @@
-import { Link ,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Jobs.css"; // your CSS file
+import { useSearchParams } from "react-router-dom";
 
 const Jobs = () => {
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
+const title = searchParams.get("title");
+  const location = searchParams.get("location");
+
+     const allJobs = [
+    { id: 1, title: "Frontend Developer", location: "Bangalore" },
+    { id: 2, title: "Backend Developer", location: "Hyderabad" },
+    { id: 3, title: "Fullstack Developer", location: "Pune" },
+    { id: 4, title: "React Developer", location: "Bangalore" },
+  ];
+  
+      useEffect(() => {
+    let filtered = allJobs;
+
+    if (title) {
+      filtered = filtered.filter((job) =>
+        job.title.toLowerCase().includes(title.toLowerCase())
+      );
+    }
+
+    if (location) {
+      filtered = filtered.filter((job) =>
+        job.location.toLowerCase().includes(location.toLowerCase())
+      );
+    }
+
+    setFilteredJobs(filtered);
+  }, [title, location]);
 
   const jobs = [
     {
@@ -209,6 +239,7 @@ const Jobs = () => {
 
   return (
     <div className="jobs-container">
+
       {jobs.map((job) => (
         <div
           key={job.id}
@@ -242,7 +273,7 @@ const Jobs = () => {
               : job.description}
           </p>
 
-           {/* ✅ Read More as Link */}
+          {/* ✅ Read More as Link */}
           <Link
             to={`/job/${job.id}`}
             className="read-more"
@@ -257,6 +288,3 @@ const Jobs = () => {
 };
 
 export default Jobs;
-
-          
-  
