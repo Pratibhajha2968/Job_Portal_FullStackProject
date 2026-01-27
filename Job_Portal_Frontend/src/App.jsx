@@ -14,6 +14,7 @@ import Register from "./pages/Register";
 import JobPost from "./pages/JobPost";
 import Search from "./pages/Search";
 import JobDetails from "./pages/JobDetails";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<div></div>} />
+        <Route path="/login" element={<Login />} />
         
       </Routes>
 
