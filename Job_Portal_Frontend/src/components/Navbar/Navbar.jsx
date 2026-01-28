@@ -10,6 +10,8 @@ function Navbar() {
       <h2>Career Growth</h2>
       <div>
         <Link to="/">Home</Link>
+        <Link to="/courses">Courses</Link>
+
 
         {/* ✅ Show Login only on homepage */}
         {location.pathname === "/" && (

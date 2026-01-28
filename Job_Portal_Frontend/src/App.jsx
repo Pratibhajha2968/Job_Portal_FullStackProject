@@ -8,10 +8,14 @@ import Navbar from "./components/Navbar/Navbar";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
+// import Courses from "./pages/Courses";
+import Courses from "./pages/Courses.jsx";
+import Payment from "./pages/Payment";
+
 
 import JobDetails from "./pages/JobDetails";
 import JobPost from "./pages/JobPost";
-import Jobs from "./pages/Jobs"; // fixed path
+import Jobs from "./pages/Jobs";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
@@ -19,13 +23,17 @@ import Register from "./pages/Register";
 function App() {
   return (
     <BrowserRouter>
-      {/* Navbar without login */}
+      {/* Navbar remains the same */}
       <Navbar />
 
       <Routes>
+        {/* Courses page route */}
+        <Route path="/Courses" element={<Courses />} />
+
+        {/* Existing routes */}
+        <Route path="/payment" element={<Payment />} />
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
-        <Route path="/job/:id" element={<JobDetails />} />
         <Route path="/job/:id" element={<JobDetails />} />
         <Route path="/jobpost" element={<JobPost />} />
         <Route path="/companies" element={<Companies />} />
