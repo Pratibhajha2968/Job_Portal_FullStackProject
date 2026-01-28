@@ -83,7 +83,7 @@ job-portal-frontend/
 job-portal-backend/
 │
 ├── controllers/     # Business logic
-├── models/          # MongoDB schemas
+├── models/          # SpringBoot
 ├── routes/          # API routes
 ├── middleware/      # Auth & error middleware
 ├── config/          # DB configuration
@@ -103,11 +103,19 @@ git clone https://github.com/your-username/job-portal.git
 
 ### 2️⃣ Backend Setup
 
-```bash
-cd job-portal-backend
-npm install
-npm start
-```
+Project: Maven
+
+Language: Java
+
+Spring Boot: Default (latest stable)
+
+Group: com.yourname
+
+Artifact: backend (or jobportal-backend)
+
+Packaging: Jar
+
+Java: 17 (or 11 if your system supports only that)
 
 Create a `.env` file:
 
@@ -119,8 +127,12 @@ JWT_SECRET=your_secret_key
 ### 3️⃣ Frontend Setup
 
 ```bash
-cd job-portal-frontend
-npm install
+cd your directory_name
+npm  create  vite@latest
+project_name
+package_name
+cd your project_name
+npm install axios react-router-dom
 npm run dev
 ```
 # 🚀 Job Portal Frontend
