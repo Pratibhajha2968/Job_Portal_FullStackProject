@@ -19,6 +19,8 @@ import Jobs from "./pages/Jobs";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
+import ApplyJob from "./pages/ApplyJobs.jsx";
+import AdminApplication from "./pages/AdminApplication.jsx";
 
 function App() {
   return (
@@ -42,6 +44,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<div></div>} />
+
+        <Route path="/apply/:jobId" element={<ApplyJob />} />
+        <Route path="/admin/application/:jobId" element={<AdminApplication />} />
       </Routes>
 
       <Footer />

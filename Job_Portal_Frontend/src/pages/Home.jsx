@@ -40,8 +40,9 @@ const Home = () => {
           <Link to="/Companies">Companies</Link>
           <Link to="/how-it-works">How It Works</Link>
           {/* <Link to="/login">Login</Link> */}
-          <Link to="/register">Register</Link>
+          {/* <Link to="/register">Register</Link> */}
           <Link to="/profile">Profile</Link>
+          <Link to="/applyjob">ApplyJob</Link>
         </nav>
       </header>
 

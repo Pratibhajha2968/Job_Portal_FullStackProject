@@ -1,23 +1,30 @@
 package com.excelR.Job_Portal_Backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
 
 @Data
 @Entity
-@Table(name="jobapllication")
+@Table(name = "jobapplications")
 public class JobApplication {
-      
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	  private long id;
-	  private long userId;
-	  private long jobId;
-	  private String status;
-//	  it will tell you about where you applied for the job , are you selected or rejected
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private long userId;
+    private long jobId;
+
+    private String resumePath;
+
+    @Enumerated(EnumType.STRING)
+    private ApplicationStatus status = ApplicationStatus.APPLIED;
+
+    @PrePersist
+    public void setDefaultStatus() {
+        if (status == null) {
+            status = ApplicationStatus.APPLIED;
+        }
+    }
 }
