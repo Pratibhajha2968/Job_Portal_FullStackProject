@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
+import ForgotPassword from "./pages/ForgotPassword";
+
 // import Courses from "./pages/Courses";
 import Courses from "./pages/Courses.jsx";
 import Payment from "./pages/Payment";
@@ -31,6 +33,7 @@ function App() {
         <Route path="/Courses" element={<Courses />} />
 
         {/* Existing routes */}
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
