@@ -214,13 +214,84 @@ This is the **frontend part of a Job Portal** project, built with **React.js**.
 ## 👩‍💻 Author
 
 **Pratibha Priya Jha**
-Frontend / MERN Stack Developer
+Frontend / MERN Stack Developer / Java FullStack Developer
 GitHub: [https://github.com/Pratibhajha2968]
 LinkedIn: [https://www.linkedin.com/in/pratibhajha2589]
    AND
  **Agalya D**  
  GitHub: [https://github.com/agalya12-tech] 
  LinkedIn: [https://www.linkedin.com/in/agalya-d-437248306/]
+ 
+
+ User opens Job List Page
+        |
+        v
+User clicks "Apply" on Job (jobId = 101)
+        |
+        v
+Apply Page opens
+(User uploads resume)
+        |
+        v
+User clicks "Submit Application"
+        |
+        v
+System checks: Is user logged in?
+        |
+   YES / NO
+    |     |
+    |     v
+    |  Redirect to Login Page
+    |        |
+    |        v
+    |   User logs in
+    |        |
+    +--------+
+        |
+        v
+Frontend sends request to backend:
+------------------------------------------------
+POST /api/jobApplications/101
+FormData:
+- jobId = 101
+- userId = 55
+- name = "Pratibha"
+- email = "pratibha@gmail.com"
+- resume = resume.pdf
+------------------------------------------------
+        |
+        v
+Spring Boot Backend receives:
+- @PathVariable jobId
+- @RequestParam userId
+- @RequestParam MultipartFile resume
+        |
+        v
+Backend logic:
+1. Save resume file → /uploads/170000_resume.pdf
+2. Create JobApplication entity
+3. Set:
+   jobId = 101
+   userId = 55
+   resumePath = "/uploads/170000_resume.pdf"
+   status = "APPLIED"
+4. Save to database
+        |
+        v
+Database Table: job_applications
+------------------------------------------------
+id | job_id | user_id | resume_path | status
+------------------------------------------------
+1  | 101    | 55      | /uploads/...| APPLIED
+------------------------------------------------
+        |
+        v
+Backend returns:
+"Application submitted successfully"
+        |
+        v
+Frontend shows success message
+
 
 ---
 
