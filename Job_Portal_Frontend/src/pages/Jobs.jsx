@@ -300,6 +300,17 @@ const Jobs = () => {
           <Link to={`/job/${job.id}`} className="read-more">
             Read More
           </Link>
+
+          <br />
+          <br />
+
+          <Link to={`/apply/${job.id}`}>
+            <button>Apply</button>
+          </Link>
+                     <br />
+           <Link to={`/admin/applications/${job.id}`}>
+             <button>View Applications</button>
+              </Link>
         </div>
       ))}
     </div>

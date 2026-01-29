@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import com.excelR.Job_Portal_Backend.dto.LoginRequest;
 import com.excelR.Job_Portal_Backend.dto.RegisterRequest;
+import com.excelR.Job_Portal_Backend.model.ApplicationStatus;
+import com.excelR.Job_Portal_Backend.model.JobApplication;
 import com.excelR.Job_Portal_Backend.model.User;
 import com.excelR.Job_Portal_Backend.service.AuthService;
+import com.excelR.Job_Portal_Backend.service.JobApplicationService;
 import com.excelR.Job_Portal_Backend.security.JwtUtil;
 
 @RestController
@@ -51,5 +54,8 @@ public class AuthController {
             )
         );
     }
+    
+   
+
 }
 
