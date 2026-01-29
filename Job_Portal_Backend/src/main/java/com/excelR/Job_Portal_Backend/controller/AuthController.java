@@ -16,7 +16,7 @@ import com.excelR.Job_Portal_Backend.security.JwtUtil;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5174")
 public class AuthController {
 
     private final AuthService authService;

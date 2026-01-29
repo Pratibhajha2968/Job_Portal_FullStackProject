@@ -1,7 +1,7 @@
 package com.excelR.Job_Portal_Backend.controller;
 
-import com.excelR.Job_Portal_Backend.model.ApplicationStatus;
 import com.excelR.Job_Portal_Backend.model.JobApplication;
+import com.excelR.Job_Portal_Backend.model.ApplicationStatus;
 import com.excelR.Job_Portal_Backend.service.FileStorageService;
 import com.excelR.Job_Portal_Backend.service.JobApplicationServiceImpl;
 import org.springframework.core.io.Resource;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/applications")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5174")
 public class JobApplicationController {
 
     private final JobApplicationServiceImpl jobApplicationService;
@@ -27,35 +27,39 @@ public class JobApplicationController {
         this.fileStorageService = fileStorageService;
     }
 
-    // 1️⃣ Apply for a job with resume upload
+    // ✅ Apply for job
     @PostMapping("/apply")
     public JobApplication applyForJob(
             @RequestParam long jobId,
+            @RequestParam long userId,
             @RequestParam MultipartFile resume
     ) throws IOException {
+    	System.out.println("APPLY API HIT");
+    	
+    	System.out.println("jobId = " + jobId);
+        System.out.println("userId = " + userId);
+        System.out.println("file = " + resume.getOriginalFilename());
 
-        // Save the resume
+        // Save file to server
         String resumePath = fileStorageService.saveResume(resume);
 
-        // Apply for the job
-        JobApplication application = jobApplicationService.applyForJob(jobId, resumePath);
-
-        return application;
+        // Save application in DB
+        return jobApplicationService.applyForJob(jobId, userId, resumePath);
     }
 
-    // 2️⃣ Get all applications by user
+    // Get applications by user
     @GetMapping("/user/{userId}")
     public List<JobApplication> getApplicationsByUser(@PathVariable long userId) {
         return jobApplicationService.getApplicationsByUser(userId);
     }
 
-    // 3️⃣ Get all applications by job
+    // Get applications by job
     @GetMapping("/job/{jobId}")
     public List<JobApplication> getApplicationsByJob(@PathVariable long jobId) {
         return jobApplicationService.getApplicationsByJob(jobId);
     }
 
-    // 4️⃣ Update application status (Admin only)
+    // Update application status
     @PutMapping("/{applicationId}/status")
     public JobApplication updateApplicationStatus(
             @PathVariable long applicationId,
@@ -64,11 +68,10 @@ public class JobApplicationController {
         return jobApplicationService.updateApplicationStatus(applicationId, status);
     }
 
-    // 5️⃣ Download resume (Admin only)
+    // Download resume
     @GetMapping("/download/{applicationId}")
     public ResponseEntity<Resource> downloadResume(@PathVariable long applicationId) throws IOException {
         JobApplication application = jobApplicationService.getApplicationById(applicationId);
-
         Resource file = fileStorageService.loadResume(application.getResumePath());
 
         return ResponseEntity.ok()

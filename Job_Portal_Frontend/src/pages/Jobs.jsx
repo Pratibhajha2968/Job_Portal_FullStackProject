@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import "../styles/Jobs.css"; // your CSS file
+import "../styles/Apply.css";
 
 const Jobs = () => {
   const navigate = useNavigate();
@@ -8,6 +11,13 @@ const Jobs = () => {
 
   const title = searchParams.get("title");
   const location = searchParams.get("location");
+
+  const { user } = useContext(AuthContext);
+
+  const handleApply = (jobId) => {
+    if (!user) navigate("/login");
+    else navigate(`/apply/${jobId}`);
+  };
 
   const jobs = [
     {
@@ -305,12 +315,12 @@ const Jobs = () => {
           <br />
 
           <Link to={`/apply/${job.id}`}>
-            <button>Apply</button>
+            <button>Apply Now</button>
           </Link>
-                     <br />
-           <Link to={`/admin/applications/${job.id}`}>
-             <button>View Applications</button>
-              </Link>
+          <br /><br />
+          <Link to={`/admin/applications/${job.id}`}>
+            <button>View Applications</button>
+          </Link>
         </div>
       ))}
     </div>

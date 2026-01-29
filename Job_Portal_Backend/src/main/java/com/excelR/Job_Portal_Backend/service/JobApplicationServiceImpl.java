@@ -4,7 +4,6 @@ import com.excelR.Job_Portal_Backend.model.ApplicationStatus;
 import com.excelR.Job_Portal_Backend.model.JobApplication;
 import com.excelR.Job_Portal_Backend.repository.JobApplicationRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -17,27 +16,26 @@ public class JobApplicationServiceImpl {
         this.jobApplicationRepository = jobApplicationRepository;
     }
 
-    // Apply for job with resume
-    public JobApplication applyForJob(long jobId, String resumePath) {
+    // ✅ Apply for job
+    public JobApplication applyForJob(long jobId, long userId, String resumePath) {
+    	
+    	System.out.println("SAVING TO DB");
+
         JobApplication application = new JobApplication();
-
-        // TODO: Replace with logged-in user ID in production
-        long userId = 1;
-
-        application.setUserId(userId);
         application.setJobId(jobId);
+        application.setUserId(userId);
         application.setResumePath(resumePath);
         application.setStatus(ApplicationStatus.APPLIED);
 
         return jobApplicationRepository.save(application);
     }
 
-    // Get applications by user
+    // Get all applications by user
     public List<JobApplication> getApplicationsByUser(long userId) {
         return jobApplicationRepository.findByUserId(userId);
     }
 
-    // Get applications by job
+    // Get all applications by job
     public List<JobApplication> getApplicationsByJob(long jobId) {
         return jobApplicationRepository.findByJobId(jobId);
     }
@@ -45,7 +43,6 @@ public class JobApplicationServiceImpl {
     // Update application status
     public JobApplication updateApplicationStatus(long applicationId, ApplicationStatus status) {
         Optional<JobApplication> optional = jobApplicationRepository.findById(applicationId);
-
         if (optional.isPresent()) {
             JobApplication application = optional.get();
             application.setStatus(status);
@@ -55,7 +52,7 @@ public class JobApplicationServiceImpl {
         }
     }
 
-    // Get single application by ID
+    // Get single application
     public JobApplication getApplicationById(long applicationId) {
         return jobApplicationRepository.findById(applicationId)
                 .orElseThrow(() -> new RuntimeException("Application not found"));

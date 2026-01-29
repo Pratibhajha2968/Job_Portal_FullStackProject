@@ -1,9 +1,18 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import "../styles/Login.css";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+  const handleLogin = () => {
+    // fake login for now
+    const userData = { id: 1, name: "Pratibha" };
+    login(userData);
+    navigate("/jobs");
+  };
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -40,9 +49,7 @@ const Login = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h1>Login</h1>
-
         {error && <p className="error">{error}</p>}
-
         <input
           type="email"
           name="email"
@@ -52,7 +59,6 @@ const Login = () => {
         />
         <br />
         <br />
-
         <input
           type="password"
           name="password"
@@ -60,21 +66,19 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-
         <div className="forgot-password">
           <span onClick={() => navigate("/forgot-password")}>
             Forgot password?
           </span>
         </div>
-
         <button type="submit">Login</button>
-
         <p>
           Dont have an account?{" "}
           <span onClick={() => navigate("/Register")} className="Link">
             Register
           </span>
         </p>
+         {/* <button onClick={handleLogin}>Login</button>; */}
       </form>
     </div>
   );

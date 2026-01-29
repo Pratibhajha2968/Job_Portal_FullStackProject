@@ -31,6 +31,8 @@ public class JobApplicationService {
         return jobApplicationRepo.save(app);
     }
 
+   
+
     // 2️⃣ Update application status
     public JobApplication updateApplicationStatus(Long applicationId, ApplicationStatus status) {
         JobApplication app = jobApplicationRepo.findById(applicationId)
